@@ -39,7 +39,7 @@ function CategoryMenu() {
   };
 
   return (
-    <div>
+    <div padding-bottom='10px'>
       <h2>Choose a Category:</h2>
       {categories.map((item) => (
         <button

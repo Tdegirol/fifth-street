@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Image, Container, Dropdown } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { useStoreContext } from '../../utils/GlobalState';
 import { UPDATE_PRODUCTS } from '../../utils/actions';
@@ -6,6 +7,7 @@ import ProductItem from '../ProductItem';
 import { QUERY_PRODUCTS } from '../../utils/queries';
 import spinner from '../../assets/spinner.gif';
 import { idbPromise } from '../../utils/helpers';
+import CategoryMenu from '../CategoryMenu';
 
 function ProductList() {
   const [state, dispatch] = useStoreContext();
@@ -46,26 +48,35 @@ function ProductList() {
   }
 
   return (
-    <div className="my-2">
-      <h2>Our Products:</h2>
-      {state.products.length ? (
-        <div className="flex-row">
-          {filterProducts().map((product) => (
-            <ProductItem
-              key={product._id}
-              _id={product._id}
-              image={product.image}
-              name={product.name}
-              price={product.price}
-              quantity={product.quantity}
-            />
-          ))}
-        </div>
-      ) : (
-        <h3>You haven't added any products yet!</h3>
-      )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
-    </div>
+    <Container>
+      {/* <Image
+        src={require(`../../assets/logo.jpg`)}
+        fluid
+        className='background-image'
+      /> */}
+      {/* <CategoryMenu /> */}
+      
+      <div className="my-2">
+        <h2>Our Products:</h2>
+        {state.products.length ? (
+          <div className="flex-row">
+            {filterProducts().map((product) => (
+              <ProductItem
+                key={product._id}
+                _id={product._id}
+                image={product.image}
+                name={product.name}
+                price={product.price}
+                quantity={product.quantity}
+              />
+            ))}
+          </div>
+        ) : (
+          <h3>You haven't added any products yet!</h3>
+        )}
+        {loading ? <img src={spinner} alt="loading" /> : null}
+      </div>
+    </Container>
   );
 }
 
