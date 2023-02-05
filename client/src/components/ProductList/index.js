@@ -42,8 +42,9 @@ function ProductList() {
   function filterProducts() {
     if (!currentCategory) {
       return state.products;
+    } else if (state.allCategories) {
+      return state.products;
     }
-
     return state.products.filter(product => product.category._id === currentCategory);
   }
 

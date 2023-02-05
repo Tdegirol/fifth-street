@@ -38,9 +38,25 @@ function CategoryMenu() {
     });
   };
 
+  const handleAll = () => {
+    dispatch({
+      type: UPDATE_CURRENT_CATEGORY,
+      allCategories: true
+    });
+  }
+
   return (
     <div padding-bottom='10px'>
       <h2>Choose a Category:</h2>
+      {
+        <button
+        onClick={() => {
+          handleAll();
+        }}
+        >
+          All
+        </button>
+      }
       {categories.map((item) => (
         <button
           key={item._id}

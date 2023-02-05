@@ -212,9 +212,11 @@ input:focus {
 
 .footer--pin {
   position: relative;
+  width: 100%;
   left: 0;
   bottom: 0;
-  height:20px;
+  height:40px;
+  justify-content: center;
 }
 
 .footer-button {
